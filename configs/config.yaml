@@ -1,0 +1,34 @@
+# YOLOv5 Model Export Configuration
+
+model:
+  name: yolov5s
+  weights: yolov5s.pt
+  architecture: yolov5
+  
+training:
+  dataset: coco128
+  img_size: 640
+  batch_size: 16
+  epochs: 3
+  device: 0  # GPU device, or 'cpu'
+  workers: 8
+  cache: true
+  
+export:
+  format: onnx
+  opset: 17
+  dynamic: false
+  simplify: true
+  img_size: 640
+  
+inference:
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  max_detections: 1000
+  device: cpu
+  
+paths:
+  data_dir: ./data
+  weights_dir: ./artifacts/models
+  export_dir: ./artifacts/exports
+  results_dir: ./results
